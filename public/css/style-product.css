@@ -1,0 +1,810 @@
+.shop-page {
+    background: #f9f9f9;
+    padding: 60px 0;
+}
+
+.container {
+    width: 90%;
+    /* بدلاً من 1200px لجعلها مرنة */
+    max-width: 1200px;
+    margin: auto;
+}
+
+.breadcrumb {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.shop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.shop-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.products-count {
+    color: #999;
+}
+
+.sort-box select {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.shop-layout-wrapper {
+    display: flex;
+    gap: 40px;
+}
+
+/* --- إعدادات الخطوط والألوان العامة لـ INFINI --- */
+
+
+/* --- تنسيق السايدبار (Sidebar) --- */
+.sidebar {
+    width: 260px;
+    padding-right: 20px;
+}
+
+.filter-group {
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+.filter-group:last-child {
+    border-bottom: none;
+}
+
+.filter-group h4 {
+    font-family: 'Marcellus', serif;
+    font-size: 1.5rem;
+    color: #111827;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.filter-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #111827;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.filter-group label:hover {
+    color: var(--gold);
+}
+
+/* 1. إخفاء المظهر الافتراضي للمتصفح تماماً */
+.filter-group input[type="checkbox"],
+.filter-group input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+    margin-right: 12px;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    /* الإطار الرمادي الخفيف وهو غير محدد */
+    width: 20px;
+    height: 20px;
+    position: relative;
+    transition: all 0.2s ease;
+    display: inline-grid;
+    place-content: center;
+}
+
+/* 2. جعل الـ Radio دائري والـ Checkbox مربع بحواف ناعمة */
+.filter-group input[type="radio"] {
+    border-radius: 50%;
+}
+
+.filter-group input[type="checkbox"] {
+    border-radius: 4px;
+}
+
+/* 3. التنسيق عند تحديد العنصر (Checked) */
+.filter-group input:checked {
+    border-color: #fdbf24;
+    /* تغيير الإطار للون الأصفر عند التحديد */
+    background-color: #fff;
+    /* نحافظ على الخلفية بيضاء ليظهر التصميم نظيفاً */
+}
+
+/* 4. رسم الدائرة الصفراء الداخلية (بدون أي سواد) */
+.filter-group input::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    transform: scale(0);
+    /* مخفية في البداية */
+    transition: 120ms transform ease-in-out;
+    background-color: #fdbf24;
+    /* اللون الأصفر الصافي */
+}
+
+/* جعل النقطة الداخلية دائرية للـ Radio */
+.filter-group input[type="radio"]::before {
+    border-radius: 50%;
+}
+
+/* إظهار النقطة عند التحديد */
+.filter-group input:checked::before {
+    transform: scale(1);
+}
+
+/* 5. إزالة أي "Focus" أو إطار أسود يظهر عند الضغط */
+.filter-group input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* --- Price Range --- */
+input[type="range"] {
+    width: 100%;
+    accent-color: #fad047;
+    margin-bottom: 10px;
+}
+
+.price-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    color: #111827;
+}
+
+/* --- Colors Section --- */
+.colors {
+    display: flex;
+    gap: 10px;
+}
+
+.color {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.color:hover {
+    transform: scale(1.2);
+}
+
+/* الأسود الفحمي - أهدأ من الأسود العادي */
+.black {
+    background: #2c2c2c;
+}
+
+/* الذهب الملكي - مطابق تماماً لهوية الموقع */
+.yellow {
+    background: #fad047;
+}
+
+/* الرمادي الدافئ (Taupe) - يعطي إحساساً بالفخامة */
+.gray {
+    background: #a8a29e;
+}
+
+/* العنابي العميق (Burgundy) - بديل راقٍ للأحمر */
+.red {
+    background: #ed3b3b;
+}
+
+/* الأزرق الكحلي (Midnight Blue) - رسمي وأنيق */
+.blue {
+    background: #4878c6;
+}
+
+.green {
+    background: #d0f37d;
+}
+
+/* --- منطقة المنتجات (Products Area) --- */
+.products-area {
+    flex: 1;
+}
+
+/* ================= Smart Box ================= */
+
+.smart-box {
+    background: #f4e6d4;
+    padding: 25px 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 20px;
+}
+
+.smart-box h4 {
+    margin-bottom: 8px;
+}
+
+.smart-box button {
+    background: #c5a059;
+    color: #fff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 30px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.smart-box button:hover {
+    opacity: 0.9;
+}
+
+/* ================= Products Grid ================= */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* ================= Pagination ================= */
+
+.pagination {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pagination span {
+    min-width: 40px;
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 500;
+    border: 1px solid #eee;
+    transition: 0.3s;
+    user-select: none;
+}
+
+.pagination span:hover {
+    background: #f3f3f3;
+}
+
+.pagination .active {
+    background: #c5a059;
+    color: #fff;
+    border-color: #c5a059;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .pagination span {
+        min-width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+}
+/* ================= Responsive ================= */
+
+/* Laptop small */
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20;
+    }
+
+    .smart-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .smart-box button {
+        width: 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+
+    .products-grid {
+        grid-template-columns: 1fr;
+        /* عرض كرت واحد في السطر */
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    /* ضبط حاوية الصورة لتكون متناسقة */
+    .product-image-wrapper {
+        height: auto !important;
+        width: 100%;
+        /* إلغاء الارتفاع الثابت */
+        aspect-ratio: 1 / 1;
+        /* إجبار الحاوية أن تكون مربعة تماماً */
+        padding: 5px !important;
+        background: #f7f7f7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* ضمان ظهور الصورة كاملة دون قص أو تمطيط */
+    .product-image-wrapper img {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 95% !important;
+        /* السماح للصورة بأخذ 95% من مساحة المربع */
+        max-height: 95% !important;
+        object-fit: contain !important;
+        /* يضمن عدم ضياع أي جزء من ال
+        /* أهم سطر: يضمن ظهور المنتج كاملاً داخل المربع */
+    }
+
+    /* تحسين شكل الكرت في الجوال */
+    .product-card {
+        width: 90% !important;
+        /* العرض مناسب وليس كامل الشاشة */
+        max-width: 300px;
+        /* أقصى عرض للكرت ليبقى أنيقاً */
+        margin: 0 auto;
+        /* توسيط الكرت في المنتصف */
+        border-radius: 15px !important;
+        /* توسيط الكرت في منتصف الشاشة */
+    }
+
+    .pagination span {
+        margin: 4px;
+        padding: 6px 10px;
+    }
+}
+
+/* --- الصندوق الذكي (Smart Box) --- */
+.smart-box {
+    background: #fdf6ec;
+    /* لون كريمي فخم */
+    padding: 25px 35px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    border: 1px dashed #e6d5bc;
+}
+
+.smart-box h3 {
+    font-family: 'Marcellus', serif;
+    margin: 0;
+    font-size: 1.5rem;
+    color: #4a3f35;
+}
+
+.smart-box p {
+    margin: 5px 0 0;
+    color: #8a7a6a;
+    font-size: 0.95rem;
+}
+
+.smart-box button {
+    background: var(--gold);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.smart-box button:hover {
+    background: var(--dark);
+    transform: translateY(-2px);
+}
+
+/* --- ترتيب الصفحة الكلي --- */
+/* تأكد من إضافة هذا الكلاس في الـ HTML حول الـ Sidebar والـ Products Area */
+.shop-layout-wrapper {
+    display: flex;
+    gap: 40px;
+    padding-top: 50px;
+}
+
+/****************************************************/
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* ================= CARD ================= */
+
+.product-card {
+    background: #fff;
+    border-radius: 22px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #f2f2f2;
+    transition: all 0.35s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* ================= IMAGE ================= */
+
+.product-image-wrapper {
+    background: #f7f7f7;
+    height: 290px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.product-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* ليملأ المربع بشكل جميل */
+}
+
+/* ================= BADGE ================= */
+
+.badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.bestseller {
+    background: #ff9f1c;
+}
+
+.new {
+    background: #2ecc71;
+}
+
+.top {
+    background: #ff6b00;
+}
+
+/* ================= WISHLIST ================= */
+
+.wishlist {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: 0.3s;
+    color: #fe0707;
+}
+
+.wishlist:hover {
+    color: #fff;
+    background: #fe0707;
+}
+
+/* ================= BODY ================= */
+
+.card-body {
+    padding: 20px;
+
+}
+
+.rating {
+    margin-left: 10px;
+    color: #f4b400;
+    font-size: 1.2rem !important;
+    margin-bottom: 8px;
+}
+
+.rating span {
+    color: #999;
+    margin-left: 6px;
+    font-size: 1rem;
+}
+
+.card-body h4 {
+    margin-left: 10px;
+
+    font-family: 'Marcellus', serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+/* ================= PRICE ================= */
+
+.price-box {
+    margin-left: 10px;
+
+    margin-bottom: 18px;
+}
+
+.current-price {
+    color: #c5a059;
+    font-weight: 700;
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+.old-price {
+    color: #aaa;
+    text-decoration: line-through;
+    font-size: 14px;
+}
+
+/* ================= BUTTON ================= */
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn.secondary {
+    background: #111827;
+    color: #ddd;
+}
+
+.btn.secondary:hover {
+    background: #e0e0e0;
+}
+
+.btn:not(.secondary) {
+    background: #222;
+    color: #fff;
+}
+
+.btn:not(.secondary):hover {
+    background: #000;
+}
+
+/********************************************************/
+.badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: white;
+}
+
+.bestseller {
+    background: orange;
+}
+
+.new {
+    background: green;
+}
+
+.top {
+    background: darkorange;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.pagination span {
+    margin: 0 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.pagination .active {
+    background: orange;
+    color: white;
+}
+
+.recently-viewed {
+    margin-top: 80px;
+    padding-bottom: 40px;
+}
+
+.recently-viewed h2 {
+    font-family: 'Marcellus', serif;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #111;
+}
+
+.recent-grid {
+    display: grid;
+    /* توزيع 5 كروت في السطر كما في الصورة */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.recent-card {
+    background: white;
+    border-radius: 18px;
+    transition: 0.3s;
+    /* إضافة ظل خفيف جداً ليشبه الصورة */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* حاوية الصورة لضمان ظهورها بشكل كامل ومنظم */
+.recent-img-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* مربع تماماً */
+    overflow: hidden;
+    background: #fcfcfc;
+}
+
+.recent-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* ليملأ المربع بشكل جميل */
+    transition: 0.4s;
+}
+
+.recent-card:hover img {
+    transform: scale(1.08);
+}
+
+/* منطقة النصوص أسفل الصورة */
+.recent-info {
+    padding: 15px 12px;
+    text-align: left;
+    /* المحاذاة لليسار كما في الصورة */
+}
+
+.recent-info h4 {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.recent-price {
+    color: #fdbf24;
+    /* اللون الأصفر/الذهبي الخاص بموقعك */
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* ================= Responsive ================= */
+
+/* Tablet */
+@media (max-width: 1200px) {
+    .recent-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .recent-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .recent-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.shop-layout-wrapper {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    /* يسمح بالنزول في الشاشات الصغيرة */
+}
+
+/* --- الشاشات المتوسطة (Tablets) --- */
+@media (max-width: 992px) {
+    .shop-layout-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100% !important;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* توزيع الفلاتر بجانب بعضها */
+        gap: 20px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* --- الشاشات الصغيرة (Mobile) --- */
+@media (max-width: 576px) {
+    .sidebar {
+        grid-template-columns: 1fr;
+        /* الفلاتر تحت بعضها */
+    }
+
+    .shop-header h1 {
+        font-size: 1.8rem !important;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(1, 1fr) !important;
+        /* عمودين صغيرين */
+        gap: 10px !important;
+    }
+
+    .product-card {
+        border-radius: 12px !important;
+    }
+
+    .product-image-wrapper {
+        height: 160px !important;
+        padding: 10px !important;
+    }
+
+    .card-body {
+        padding: 10px !important;
+    }
+
+    .card-body h4 {
+        font-size: 0.85rem !important;
+        margin: 0 0 5px 0 !important;
+    }
+
+    .current-price {
+        font-size: 1rem !important;
+    }
+
+}
