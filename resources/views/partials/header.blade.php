@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 </head>
-   <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 sticky-top border-bottom">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 sticky-top border-bottom">
         <div class="container-fluid px-lg-5 d-flex align-items-center justify-content-between">
 
             <div class="navbar-brand-wrapper d-flex align-items-center" style="flex: 1;">
@@ -47,15 +47,11 @@
 
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav mx-auto gap-lg-3 gap-2 text-center py-3 py-lg-0">
-                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="#home"
+                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="{{ url('/') }}"
                             style="color: #111827; font-family: 'Marcellus', serif;">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="#shop"
-                            style="color: #111827; font-family: 'Marcellus', serif;">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="#occasions"
+                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="{{ url('/#occasion-catalog') }}"
                             style="color: #111827; font-family: 'Marcellus', serif;">Occasions</a></li>
-                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="#about-us"
-                            style="color: #111827; font-family: 'Marcellus', serif;">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="#contact-us"
+                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="{{ url('/#footer') }}"
                             style="color: #111827; font-family: 'Marcellus', serif;">Contact Us</a></li>
                 </ul>
             </div>
@@ -70,11 +66,17 @@
 
                 <div class="d-flex align-items-center gap-4">
 
-                    <a href="#" class="text-dark position-relative">
-                        <i class="bi bi-bag" style="font-size: 1.8rem;"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark"
-                            style="font-size: 0.7rem;">0</span>
-                    </a>
+<a href="/cart" id="cart-icon" class="text-dark position-relative">
+    <i class="bi bi-bag" style="font-size: 1.8rem;"></i>
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark"
+        style="font-size: 0.7rem;" id="cart-count">0</span>
+</a>
+                    <!-- أيقونة المفضلة -->
+            <a href="wishlist.html" class="text-dark position-relative">
+                    <i class="bi bi-heart" style="font-size: 1.8rem;"></i>
+                     <span id="wishlist-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                   style="font-size: 0.7rem;" id="cart-count">0</span>
+                        </a>
                     <a href="#" class="text-dark"><i class="bi bi-bell" style="font-size: 1.8rem;"></i></a>
                     <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" class="text-dark"><i
                             class="bi bi-person" style="font-size: 1.8rem;"></i></a>
@@ -82,4 +84,4 @@
             </div>
 
         </div>
-</nav>
+    </nav>

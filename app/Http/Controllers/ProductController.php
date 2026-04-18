@@ -2,21 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
-use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
 
+// لا تقم باستدعاء BaseController هنا، بل استعمل Controller الموجود في مجلدك
 class ProductController extends Controller
 {
-public function index($occasion)
-{
-    // هنا مستقبلاً ستجلب البيانات من قاعدة البيانات
-    // $products = Product::where('category', $occasion)->get();
+// عدلي الدالة لتصبح هكذا:
+public function index($occasion = 'All Gifts') {
+    $products = Product::all();
 
-    // حالياً سنقوم بتمرير اسم المناسبة فقط للتجربة
-    return view('products.index', ['occasion' => $occasion]);
+    // لازم نمرر المتغير occasion للـ view عشان يختفي اللون الأحمر
+    return view('products.index', compact('products', 'occasion'));
 }
+public function show($id)
+{
+    $product = Product::findOrFail($id);
+
+    return view('products.show', compact('product'));
 }
+public function wrapping($id) {
+    $product = Product::findOrFail($id);
+    return view('products.wrapping', compact('product'));
+}
+
+}
+
 
 //     public function create()
 //     {

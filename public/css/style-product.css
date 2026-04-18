@@ -10,7 +10,7 @@
     margin: auto;
 }
 
-.breadcrumb {
+/* .breadcrumb {
     color: #777;
     font-size: 14px;
     margin-bottom: 20px;
@@ -42,8 +42,94 @@
 .shop-layout-wrapper {
     display: flex;
     gap: 40px;
+} */
+/* ===== Header Layout ===== */
+.shop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    gap: 20px;
 }
 
+/* ===== Left Side ===== */
+.header-content {
+    max-width: 600px;
+}
+
+.page-title {
+    font-size: 38px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 10px;
+}
+
+.page-description {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.products-count {
+    font-size: 14px;
+    color: #999;
+}
+
+/* ===== Sort ===== */
+.sort-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sort-container label {
+    font-size: 20px;
+    color: #777;
+}
+
+/* ===== Select Style ===== */
+.custom-select {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 3px solid #ddd;
+    background: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    min-width: 180px;
+}
+
+.custom-select:hover {
+    border-color: #0f172a;
+}
+
+.custom-select:focus {
+    outline: none;
+    border-color: #0f172a;
+}
+
+/* ===== Breadcrumb تحسين ===== */
+/* غير الاسم من .breadcrumb إلى .breadcrumb-nav */
+.breadcrumb-nav {
+    color: #888;
+    font-size: 1.5rem; /* 1.8rem كبير جداً للبريد كرمب، جرب 1.2 أولاً */
+    margin-bottom: 25px;
+    font-family: 'Marcellus', serif;
+
+}
+
+.breadcrumb-nav a {
+    color: #666;
+    text-decoration: none;
+}
+
+.breadcrumb-nav a:hover {
+    color: #0f172a;
+}
+.current-page:hover {
+    color: #0f172a;
+}
 /* --- إعدادات الخطوط والألوان العامة لـ INFINI --- */
 
 
@@ -235,8 +321,8 @@ input[type="range"] {
 }
 
 .smart-box button {
-    background: #c5a059;
-    color: #fff;
+    background: #111827;
+    color: #ddd;
     border: none;
     padding: 12px 22px;
     border-radius: 30px;
@@ -246,6 +332,8 @@ input[type="range"] {
 }
 
 .smart-box button:hover {
+    background: #e0e0e0;
+    color: #111827;
     opacity: 0.9;
 }
 
@@ -408,24 +496,7 @@ input[type="range"] {
     font-size: 0.95rem;
 }
 
-.smart-box button {
-    background: var(--gold);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    transition: 0.3s;
-}
 
-.smart-box button:hover {
-    background: var(--dark);
-    transform: translateY(-2px);
-}
 
 /* --- ترتيب الصفحة الكلي --- */
 /* تأكد من إضافة هذا الكلاس في الـ HTML حول الـ Sidebar والـ Products Area */
@@ -493,9 +564,6 @@ input[type="range"] {
     background: #ff9f1c;
 }
 
-.new {
-    background: #2ecc71;
-}
 
 .top {
     background: #ff6b00;
@@ -620,9 +688,6 @@ input[type="range"] {
     background: orange;
 }
 
-.new {
-    background: green;
-}
 
 .top {
     background: darkorange;
@@ -808,3 +873,577 @@ input[type="range"] {
     }
 
 }
+
+/*----------------------------------------------------------صفحة تفاصيل المنتج -------------------------------------*/
+.product-details {
+  padding: 60px 0;
+  background: #f8f8f8;
+}
+
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+/* ===== Gallery ===== */
+
+.main-image {
+  position: relative;
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.main-image img {
+  width: 100%;
+}
+
+.wishlist {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.thumbs {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.thumb {
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.thumb.active {
+  border-color: #e29018;
+}
+
+/* ===== Info ===== */
+
+.product-info h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.rating {
+  margin-bottom: 20px;
+}
+
+.in-stock {
+  background: #e5f6ea;
+  color: #2d9d52;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.price {
+  margin: 20px 0;
+}
+
+.price .new {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.price .old {
+  text-decoration: line-through;
+  margin-left: 10px;
+  color: #aaa;
+}
+
+.price .save {
+  color: #e29018;
+  margin-left: 10px;
+}
+
+.option label {
+  font-weight: 600;
+}
+
+.size-options {
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.size {
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  background: transparent;
+  cursor: pointer;
+}
+
+.size.active {
+  border-color: #e29018;
+  background: #fff4e5;
+}
+
+/* Buttons */
+
+.btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 40px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+        font-size: 1.1rem !important;
+
+}
+.btn:hover {
+    background: #e0e0e0 !important;
+    color: #111827 !important;
+    opacity: 0.9;
+}
+.btn.primary {
+  background: #e29018;
+  color: #fff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 30px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+.btn.outline {
+  background: #111827;
+    color: #ddd;
+     border: none;
+    padding: 12px 22px;
+    border-radius: 30px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.3s;
+  border: 2px solid #000 !important;
+}
+
+.design-note {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Features */
+
+.features {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.features div {
+  background: #fff;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 14px;
+}
+
+/* ===== Reviews ===== */
+
+.reviews-section {
+  margin-top: 80px;
+}
+
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.review-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 20px;
+}
+
+.review-card h4 {
+  margin: 15px 0;
+}
+
+.review-author {
+  display: block;
+  margin-top: 15px;
+  font-size: 13px;
+  color: #777;
+}
+.reviews-header button {
+    background: #111827;
+    color: #ddd;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 30px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.reviews-header button:hover {
+    background: #e0e0e0;
+    color: #111827;
+    opacity: 0.9;
+}
+/* ===== Responsive ===== */
+
+@media (max-width: 992px) {
+  .product-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .review-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .review-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .features {
+    flex-direction: column;
+  }
+}
+
+.product-gallery {
+  perspective: 1000px;
+}
+
+.main-image img {
+  transition: 0.4s ease;
+}
+
+.thumb img {
+  width: 100%;
+  transition: 0.3s;
+}
+
+.thumb {
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.thumb.active {
+  border-color: #e29018;
+}
+
+/* ===== Size Animation ===== */
+.price {
+  transition: 0.3s ease;
+}
+
+/* Quantity */
+.quantity-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.quantity-box button {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    background: #f5f5f5;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.quantity-box button:hover {
+    background: #000;
+    color: #fff;}
+.quantity-box button:active {
+  transform: scale(1.2);
+}
+.quantity-box span {
+    font-size: 18px;
+    font-weight: 500;
+    min-width: 25px;
+    text-align: center;
+}
+.total-price {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Accordion Smooth */
+.accordion p {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion.active p {
+  max-height: 200px;
+}
+
+/* Wiggle Button */
+.btn.primary:hover {
+  animation: wiggle 0.5s infinite;
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Helpful button */
+.helpful-btn {
+  margin-top: 15px;
+  background: #f1f1f1;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+/* ===== Image Zoom Lens ===== */
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.zoom-lens {
+  position: absolute;
+  border: 2px solid #e29018;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  cursor: none;
+  display: none;
+  background-repeat: no-repeat;
+}
+/* عندما تكون الأيقونة ممتلئة، اجعل لونها أحمر */
+.bi-heart-fill {
+    color: red !important;
+}
+
+/* اختيارياً: اجعل شكل الماوس يد عند الوقوف على الزر */
+.wishlist-icon {
+    cursor: pointer;
+}
+
+/* ============================= صفحة تغليف المنتجات =========================== */
+.wrap-page {
+    padding: 60px 0;
+}
+
+/* Header */
+.wrap-header h2 {
+    font-family: 'Marcellus', serif;
+    margin-bottom: 5px;
+}
+
+/* Grid */
+.gift-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* Cards */
+.card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* Options */
+.wrap-option {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Colors */
+.colors {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.color {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.color[data-color="gold"] { background: gold; }
+.color[data-color="black"] { background: black; }
+.color[data-color="crimson"] { background: crimson; }
+
+.color.active {
+    border: 3px solid #000;
+}
+
+/* Addon */
+.addon {
+    margin-top: 10px;
+}
+
+/* Message */
+textarea {
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Preview */
+.preview-section {
+    margin-top: 50px;
+}
+
+.preview-box {
+    height: 260px;
+    background: #f5f5f5;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+/* Gift */
+.gift {
+    width: 160px;
+    height: 110px;
+    background: #d6b98c;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* Ribbon */
+.ribbon {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: gold;
+}
+
+.ribbon-vertical {
+    position: absolute;
+    height: 100%;
+    width: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: gold;
+}
+
+/* Tags */
+.preview-tags {
+    margin-top: 15px;
+display: flex;
+    justify-content: center; /* توسيط التاغات أفقياً */
+    flex-wrap: wrap;       /* ينزل سطر جديد إذا كانت التاغات كثيرة */
+    gap: 12px;             /* المسافة بين كل تاغ والثاني */
+    width: 100%;
+}
+
+.preview-tags span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;      /* عرض أدنى مناسب */
+    height: 45px;          /* ارتفاع متناسق */
+    background: #f1f1f1;   /* حافظنا على لونك */
+    color: #333;           /* حافظنا على لونك */
+    padding: 20px;       /* مسافة داخلية جانبية */
+    border-radius: 50px;   /* حواف دائرية كاملة (Pill shape) */
+    font-size: 1.1rem;
+    border: 1px solid #e0e0e0; /* إطار خفيف جداً ليعطي عمق */
+    transition: all 0.3s ease;
+    cursor: default;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* ظل ناعم جداً */
+}
+/* تأثير بسيط عند المرور بالماوس */
+.preview-tags span:hover {
+    background: #e8e8e8;
+    transform: translateY(-2px); /* حركة خفيفة للأعلى */
+}
+/* Surprise */
+.surprise-box {
+    margin-top: 40px;
+    padding: 25px;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Bottom */
+.bottom-bar {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Buttons */
+.btn-main {
+    background: #0d1b2a;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+}
+
+.btn-outline {
+    border: 1px solid #ccc;
+    padding: 12px 25px;
+    border-radius: 30px;
+}
+
+/* تمييز كل نوع بلون خفيف */
+#tagWrap {
+    background: #f6f1e7; /* لون ورق */
+}
+
+#tagRibbon {
+    background: #fff5cc; /* ذهبي خفيف */
+}
+
+#tagAddon {
+    background: #eef7f0; /* أخضر خفيف */
+}
+

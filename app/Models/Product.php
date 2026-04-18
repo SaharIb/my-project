@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //
+    use HasFactory;
+
+    // هاد السطر عشان لارفل يرضى يضيف بيانات بالـ Bulk
+    protected $fillable = ['name', 'slug', 'description', 'price', 'image', 'stock'];
 }

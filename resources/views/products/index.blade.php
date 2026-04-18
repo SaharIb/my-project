@@ -29,31 +29,64 @@
         <div class="container">
 
             <!-- Breadcrumb -->
-            <div class="breadcrumb">
-                <a href="/">Home</a> >
-                {{ ucwords(str_replace('-', ' ', $occasion)) }}
-            </div>
+            <nav class="breadcrumb-nav">
+                <a href="/">Home</a>
+                <span class="separator">&gt;</span>
+                <span class="current-page">{{ ucwords(str_replace('-', ' ', $occasion)) }}</span>
+            </nav>
 
-            <!-- Header -->
+            {{-- <!-- Shop Header -->
             <div class="shop-header">
-                <div>
-                    <h1>{{ ucwords(str_replace('-', ' ', $occasion)) }} Gifts</h1>
-                    <p>
+                <div class="header-content">
+                    <h1 class="page-title">{{ ucwords(str_replace('-', ' ', $occasion)) }} Gifts</h1>
+                    <p class="page-description">
                         Celebrate their achievement with unique, personalized keepsakes.
-                        <span class="products-count">Showing 24 products</span>
+                        <span class="products-count">
+                            Showing {{ count($products) }} products
+                        </span>
                     </p>
                 </div>
 
-                <div class="sort-box">
-                    Sort By:
-                    <select>
-                        <option>Newest Arrivals</option>
-                        <option>Price Low to High</option>
-                        <option>Price High to Low</option>
-                    </select>
+                <div class="sort-container">
+                    <label for="sortBy">Sort By:</label>
+                    <div class="select-wrapper">
+                        <select id="sortBy" class="custom-select">
+                            <option value="name">Newest Arrivals</option>
+                            <option value="price-low">Price Low to High</option>
+                            <option value="price-high">Price High to Low</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
+            </div> --}}
+<div class="shop-header">
 
+    <!-- Left -->
+    <div class="header-content">
+        <h1 class="page-title">
+            {{ ucwords(str_replace('-', ' ', $occasion)) }} Gifts
+        </h1>
+
+        <p class="page-description">
+            Celebrate their achievement with unique, personalized keepsakes.
+        </p>
+
+        <span class="products-count">
+            Showing {{ count($products) }} products
+        </span>
+    </div>
+
+    <!-- Right -->
+    <div class="sort-container">
+        <label for="sortBy">Sort By :</label>
+
+        <select id="sortBy" class="custom-select">
+            <option value="">Newest Arrivals</option>
+            <option value="price-low">Price: Low → High</option>
+            <option value="price-high">Price: High → Low</option>
+        </select>
+    </div>
+
+</div>
             <!-- ===== Layout Start ===== -->
             <div class="shop-layout-wrapper">
 
@@ -62,15 +95,16 @@
 
                     <div class="filter-group">
                         <h4>Category</h4>
-                        <label><input type="checkbox"> Mugs & Drinkware</label>
-                        <label><input type="checkbox"> Trophy Shields</label>
-                        <label><input type="checkbox"> Gift Boxes</label>
-                        <label><input type="checkbox"> Photo Frames</label>
+                        <label><input type="checkbox" class="filter-category" value="mugs"> Mugs & Drinkware</label>
+                        <label><input type="checkbox" class="filter-category" value="trophy"> Trophy Shields</label>
+                        <label><input type="checkbox" class="filter-category" value="boxes"> Gift Boxes</label>
+                        <label><input type="checkbox" class="filter-category" value="frames"> Photo Frames</label>
                     </div>
 
                     <div class="filter-group">
                         <h4>Price Range</h4>
-                        <input type="range">
+                        <input type="range" id="priceRange" min="0" max="500" value="500">
+                        <span id="priceValue">$500</span>
                         <div class="price-labels">
                             <span>$10</span>
                             <span>$500+</span>
@@ -80,19 +114,21 @@
                     <div class="filter-group">
                         <h4>Color</h4>
                         <div class="colors">
-                            <span class="color black"></span>
-                            <span class="color yellow"></span>
-                            <span class="color gray"></span>
-                            <span class="color red"></span>
-                            <span class="color blue"></span>
+                            <span class="color black" data-color="black"></span>
+                            <span class="color yellow" data-color="yellow"></span>
+                            <span class="color gray" data-color="gray"></span>
+                            <span class="color red" data-color="red"></span>
+                            <span class="color blue" data-color="blue"></span>
                         </div>
                     </div>
 
                     <div class="filter-group">
                         <h4>Customization</h4>
-                        <label><input type="radio" name="c"> Photo Upload</label>
-                        <label><input type="radio" name="c"> Text Only</label>
-                        <label><input type="radio" name="c"> No Personalization</label>
+                        <label><input type="radio" name="c" class="filter-custom" value="photo"> Photo
+                            Upload</label>
+                        <label><input type="radio" name="c" class="filter-custom" value="text"> Text Only</label>
+                        <label><input type="radio" name="c" class="filter-custom" value="none"> No
+                            Personalization</label>
                     </div>
 
                 </aside>
@@ -111,37 +147,26 @@
 
                     <!-- Products Grid -->
                     <div class="products-grid">
-
-                        @for ($i = 1; $i <= 9; $i++)
-                            <div class="product-card">
-
-                                <div class="badge bestseller">BESTSELLER</div>
-                                <div class="wishlist">♡</div>
-
+                        @foreach ($products as $product)
+                            <div class="product-card" data-category="{{ $product->category }}"
+                                data-price="{{ $product->price }}" data-color="{{ $product->color }}"
+                                data-customization="{{ $product->customization }}">
                                 <div class="product-image-wrapper">
-                                    <img src="{{ asset('images/Eid__ (1).png') }}" alt="">
+                                    <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}">
+                                    <div class="wishlist-icon" data-id="{{ $product->id }}">
+                                        <i class="bi bi-heart"></i>
+                                    </div>
                                 </div>
-
                                 <div class="card-body">
-
-                                    <div class="rating">
-                                        ★ ★ ★ ★ ★ <span>(124)</span>
-                                    </div>
-
-                                    <h4>Engraved Wooden Frame</h4>
-
+                                    <h4>{{ $product->name }}</h4>
                                     <div class="price-box">
-                                        <span class="current-price">$34.99</span>
-                                        <span class="old-price">$45.00</span>
+                                        <span class="current-price">${{ $product->price }}</span>
                                     </div>
-
-                                    <button class="btn secondary">Customize</button>
-
+                                    <a href="{{ route('products.show', $product->id) }}" class="btn secondary">View
+                                        Details</a>
                                 </div>
-
                             </div>
-                        @endfor
-
+                        @endforeach
                     </div>
 
                     <!-- Pagination -->
@@ -301,7 +326,7 @@
                             <li><a href="#">Shipping Info</a></li>
                             <li><a href="#">Terms of Services</a></li>
                             <li><a href="#">Privacy Policy</a></li>
-                       </ul>
+                        </ul>
                     </div>
 
                     <!-- Column 3 -->
@@ -321,7 +346,7 @@
                         <h6 class="footer-title"
                             style="font-family: 'Marcellus', serif; font-size: 1.3rem; color: #111827; letter-spacing: 2px; font-weight:bold;">
                             Contact Us</h6>
-                                               <ul class="footer-contact">
+                        <ul class="footer-contact">
                             <li><i class="bi bi-envelope me-2"></i>support@infinitegifts.com</li>
                             <li><i class="bi bi-telephone me-2"></i>4567-123 (800) 1+</li>
                             <li><i class="bi bi-geo-alt me-2"></i>123 Gifting Lane, NY 10001</li>
@@ -345,4 +370,179 @@
             </div>
         </footer>
     </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const wishlistButtons = document.querySelectorAll(".wishlist-icon");
+            const wishlistCountElement = document.getElementById(
+                "wishlist-count"); // تأكد أن الـ ID مطابق لما في الهيدر
+
+            // دالة لتحديث الرقم في الهيدر
+            function updateHeaderCount(count) {
+                if (wishlistCountElement) {
+                    wishlistCountElement.innerText = count;
+                }
+            }
+
+            // جيب الداتا من localStorage أول ما تفتح الصفحة
+            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+            // تحديث الرقم في الهيدر فور تحميل الصفحة
+            updateHeaderCount(wishlist.length);
+
+            wishlistButtons.forEach(button => {
+                const productId = button.getAttribute("data-id");
+                const icon = button.querySelector("i");
+
+                // إذا المنتج موجود بالمفضلة → خلي القلب معبّي ولونه أحمر
+                if (wishlist.includes(productId)) {
+                    icon.classList.replace("bi-heart", "bi-heart-fill");
+                    icon.style.color = "red";
+                }
+
+                // لما أضغط
+                button.addEventListener("click", () => {
+                    // نعيد جلب القائمة للتأكد من أنها أحدث نسخة
+                    wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+                    if (wishlist.includes(productId)) {
+                        // حذف من المفضلة
+                        wishlist = wishlist.filter(id => id !== productId);
+                        icon.classList.replace("bi-heart-fill", "bi-heart");
+                        icon.style.color = ""; // يرجع للونه الأصلي
+                    } else {
+                        // إضافة للمفضلة
+                        wishlist.push(productId);
+                        icon.classList.replace("bi-heart", "bi-heart-fill");
+                        icon.style.color = "red";
+                    }
+
+                    // تحديث localStorage
+                    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+                    // تحديث الرقم في الهيدر فوراً بعد التعديل
+                    updateHeaderCount(wishlist.length);
+                });
+            });
+        });
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const products = document.querySelectorAll(".product-card");
+
+            const categoryFilters = document.querySelectorAll(".filter-category");
+            const priceRange = document.getElementById("priceRange");
+            const priceValue = document.getElementById("priceValue");
+            const colorFilters = document.querySelectorAll(".color");
+            const customFilters = document.querySelectorAll(".filter-custom");
+
+            let selectedColors = [];
+
+            // تحديث السعر
+            priceRange.addEventListener("input", () => {
+                priceValue.textContent = "$" + priceRange.value;
+                filterProducts();
+            });
+
+            // الكاتيجوري
+            categoryFilters.forEach(cb => {
+                cb.addEventListener("change", filterProducts);
+            });
+
+            // اللون
+            colorFilters.forEach(color => {
+                color.addEventListener("click", () => {
+                    const c = color.dataset.color;
+
+                    if (selectedColors.includes(c)) {
+                        selectedColors = selectedColors.filter(x => x !== c);
+                        color.classList.remove("active");
+                    } else {
+                        selectedColors.push(c);
+                        color.classList.add("active");
+                    }
+
+                    filterProducts();
+                });
+            });
+
+            // customization
+            customFilters.forEach(radio => {
+                radio.addEventListener("change", filterProducts);
+            });
+
+            // الفلترة الأساسية 🔥
+            function filterProducts() {
+
+                const selectedCategories = Array.from(categoryFilters)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
+
+                const selectedCustom = document.querySelector(".filter-custom:checked")?.value;
+
+                const maxPrice = parseFloat(priceRange.value);
+
+                products.forEach(product => {
+
+                    const category = product.dataset.category;
+                    const price = parseFloat(product.dataset.price);
+                    const color = product.dataset.color;
+                    const custom = product.dataset.customization;
+
+                    let show = true;
+
+                    // category
+                    if (selectedCategories.length && !selectedCategories.includes(category)) {
+                        show = false;
+                    }
+
+                    // price
+                    if (price > maxPrice) {
+                        show = false;
+                    }
+
+                    // color
+                    if (selectedColors.length && !selectedColors.includes(color)) {
+                        show = false;
+                    }
+
+                    // customization
+                    if (selectedCustom && custom !== selectedCustom) {
+                        show = false;
+                    }
+
+                    product.style.display = show ? "" : "none";
+                    sortSelect.dispatchEvent(new Event("change"));
+                });
+            }
+
+        });
+        const sortSelect = document.getElementById("sortBy");
+        const container = document.querySelector(".products-grid"); // غيّري حسب الكلاس عندك
+
+        sortSelect.addEventListener("change", () => {
+
+            let products = Array.from(container.querySelectorAll(".product-card"));
+
+            const value = sortSelect.value;
+
+            if (value === "price-low") {
+                products.sort((a, b) => a.dataset.price - b.dataset.price);
+            }
+
+            if (value === "price-high") {
+                products.sort((a, b) => b.dataset.price - a.dataset.price);
+            }
+
+            if (value === "name") {
+                products.sort((a, b) =>
+                    a.dataset.name.localeCompare(b.dataset.name)
+                );
+            }
+
+            // إعادة ترتيبهم بالصفحة
+            container.innerHTML = "";
+            products.forEach(p => container.appendChild(p));
+        });
+         document.querySelector(".products-count").textContent =
+             "Showing " + document.querySelectorAll(".product-card:not([style*='none'])").length + " products";
+    </script>
 @endsection

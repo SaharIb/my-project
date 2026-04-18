@@ -50,15 +50,12 @@
 
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav mx-auto gap-lg-3 gap-2 text-center py-3 py-lg-0">
-                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="#home"
+                <ul class="navbar-nav mx-auto gap-lg-3 gap-2 text-center py-3 py-lg-0">
+                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="{{ url('/') }}"
                             style="color: #111827; font-family: 'Marcellus', serif;">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="#shop"
-                            style="color: #111827; font-family: 'Marcellus', serif;">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="#occasions"
+                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="{{ url('/#occasion-catalog') }}"
                             style="color: #111827; font-family: 'Marcellus', serif;">Occasions</a></li>
-                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="#about-us"
-                            style="color: #111827; font-family: 'Marcellus', serif;">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="#contact-us"
+                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal p-lg-0" href="{{ url('/#footer') }}"
                             style="color: #111827; font-family: 'Marcellus', serif;">Contact Us</a></li>
                 </ul>
             </div>
@@ -73,10 +70,10 @@
 
                 <div class="d-flex align-items-center gap-4">
 
-                    <a href="#" class="text-dark position-relative">
+                    <a href="/cart" class="text-dark position-relative">
                         <i class="bi bi-bag" style="font-size: 1.8rem;"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark"
-                            style="font-size: 0.7rem;">0</span>
+                            style="font-size: 0.7rem;" id="cart-count" >0</span>
                     </a>
                     <a href="#" class="text-dark"><i class="bi bi-bell" style="font-size: 1.8rem;"></i></a>
                     <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" class="text-dark"><i
@@ -140,179 +137,7 @@
             </div>
         </div>
     </section>
-    {{-- <section id="about-us" class="py-5" style="background-color: #fff;">
-        <div class="container py-5">
-            <div class="row align-items-center g-5">
-                <div class="col-md-6" data-aos="fade-right">
-                    <div class="position-relative">
-                        <img src="{{ asset('images/About_img.png') }}" alt="Our Craft" class="img-fluid shadow-sm">
-                        <div
-                            style="position: absolute; top: -20px; left: -20px; width: 100px; height: 100px; background: #f4f4f2; z-index: -1;">
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-6" data-aos="fade-left">
-                    <h2 class="display-5 mb-4" style="font-family: 'Marcellus', serif; font-weight: 300;">Crafting
-                        Moments That Last Forever</h2>
-                    <p class="text-muted fs-5 mb-4" style="font-weight: 300; line-height: 1.8;">
-                        At INFINI, we believe that a gift is more than just an object; it's a message of love,
-                        appreciation, and connection. Our mission is to provide premium packaging and curated gifts that
-                        elevate those precious moments.
-                    </p>
-                    <p class="text-muted fs-5 mb-5" style="font-weight: 300; line-height: 1.8;">
-                        Every box we create is a blend of high-quality materials and meticulous craftsmanship, ensuring
-                        that your brand or personal message stands out with elegance.
-                    </p>
-                    <a href="#" class="btn-view-all text-uppercase" style="padding: 12px 35px;">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-
-    <!-- <section id="featured-products" class="product-store py-5">
-  <div class="container">
-
-    <div class="row mb-5">
-      <div class="col-md-12 text-center" data-aos="fade-up">
-        <h2 class="display-4 text-uppercase mb-3" style="font-family: 'Marcellus', serif; font-weight: 300;">Featured Products</h2>
-        <p class="text-muted">Explore our curated collection of luxury gifts.</p>
-        <div class="row mb-4">
-  <div class="col-12 d-flex justify-content-center">
-    <div class="filter-button-group border-bottom pb-2">
-      <button class="btn btn-link text-dark text-decoration-none mx-3 active" data-filter="*">الكل</button>
-      <button class="btn btn-link text-muted text-decoration-none mx-3" data-filter=".boxes">صناديق هدايا</button>
-      <button class="btn btn-link text-muted text-decoration-none mx-3" data-filter=".wraps">تغليف</button>
-      <button class="btn btn-link text-muted text-decoration-none mx-3" data-filter=".accessories">إكسسوارات</button>
-    </div>
-  </div>
- </div>
-        <div class="mx-auto" style="width: 50px; height: 1px; background: #c5a059;"></div>
-      </div>
-    </div>
-
-    <div class="row g-4" data-aos="zoom-out">
-
-      <div class="col-md-4 col-sm-6">
-        <div class="product-item text-center">
-          <div class="image-holder " style="background-color: #f8f9fa; padding: 30px; border-radius: 4px; overflow: hidden;">
-            <img src="{{ asset('images/product1.jpg') }}" alt="product" class="img-fluid hover-zoom-effect">
-          </div>
-
-          <div class="product-detail pt-4 px-1 text-center">
-            <h6 class="text-uppercase mb-2" style="font-family: 'Marcellus', serif; letter-spacing: 2px; font-weight: 300; font-size: 1.3rem;">Luxury Gift Box</h6>
-            <div class="d-flex align-items-center justify-content-center gap-4">
-              <span class="text-muted" style="font-size: 0.9rem; letter-spacing: 1px;">49.00 SAR</span>
-              <div style="width: 1px; height: 15px; background-color: #e0e0e0;"></div>
-              <button class="btn-mini-cart border-0 bg-transparent p-0">
-                <i class="bi bi-bag-plus fs-5 text-dark"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="product-item text-center">
-          <div class="image-holder " style="background-color: #f8f9fa; padding: 30px; border-radius: 4px; overflow: hidden;">
-            <img src="{{ asset('images/product2.jpg') }}" alt="product" class="img-fluid hover-zoom-effect">
-          </div>
-          <div class="product-detail pt-4 px-1 text-center">
-            <h6 class="text-uppercase mb-2" style="font-family: 'Marcellus', serif; letter-spacing: 2px; font-weight: 300; font-size: 1.3rem;">Premium Wrap</h6>
-            <div class="d-flex align-items-center justify-content-center gap-4">
-              <span class="text-muted" style="font-size: 0.9rem; letter-spacing: 1px;">25.00 SAR</span>
-              <div style="width: 1px; height: 15px; background-color: #e0e0e0;"></div>
-              <button class="btn-mini-cart border-0 bg-transparent p-0">
-                <i class="bi bi-bag-plus fs-5 text-dark"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="product-item text-center">
-          <div class="image-holder " style="background-color: #f8f9fa; padding: 30px; border-radius: 4px; overflow: hidden;">
-            <img src="{{ asset('images/product3.jpg') }}" alt="product" class="img-fluid hover-zoom-effect">
-          </div>
-          <div class="product-detail pt-4 px-1 text-center">
-            <h6 class="text-uppercase mb-2" style="font-family: 'Marcellus', serif; letter-spacing: 2px; font-weight: 300; font-size: 1.3rem;">Ribbon Collection</h6>
-            <div class="d-flex align-items-center justify-content-center gap-4">
-              <span class="text-muted" style="font-size: 0.9rem; letter-spacing: 1px;">15.00 SAR</span>
-              <div style="width: 1px; height: 15px; background-color: #e0e0e0;"></div>
-              <button class="btn-mini-cart border-0 bg-transparent p-0">
-                <i class="bi bi-bag-plus fs-5 text-dark"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="product-item text-center">
-          <div class="image-holder " style="background-color: #f8f9fa; padding: 30px; border-radius: 4px; overflow: hidden;">
-            <img src="{{ asset('images/product4.jpg') }}" alt="product" class="img-fluid hover-zoom-effect">
-          </div>
-          <div class="product-detail pt-4 px-1 text-center">
-            <h6 class="text-uppercase mb-2" style="font-family: 'Marcellus', serif; letter-spacing: 2px; font-weight: 300; font-size: 1.3rem;">Luxury Gift Box V2</h6>
-            <div class="d-flex align-items-center justify-content-center gap-4">
-              <span class="text-muted" style="font-size: 0.9rem; letter-spacing: 1px;">55.00 SAR</span>
-              <div style="width: 1px; height: 15px; background-color: #e0e0e0;"></div>
-              <button class="btn-mini-cart border-0 bg-transparent p-0">
-                <i class="bi bi-bag-plus fs-5 text-dark"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="product-item text-center">
-          <div class="image-holder " style="background-color: #f8f9fa; padding: 30px; border-radius: 4px; overflow: hidden;">
-            <img src="{{ asset('images/product5.jpg') }}" alt="product" class="img-fluid hover-zoom-effect">
-          </div>
-          <div class="product-detail pt-4 px-1 text-center">
-            <h6 class="text-uppercase mb-2" style="font-family: 'Marcellus', serif; letter-spacing: 2px; font-weight: 300; font-size: 1.3rem;">Custom Tag Set</h6>
-            <div class="d-flex align-items-center justify-content-center gap-4">
-              <span class="text-muted" style="font-size: 0.9rem; letter-spacing: 1px;">10.00 SAR</span>
-              <div style="width: 1px; height: 15px; background-color: #e0e0e0;"></div>
-              <button class="btn-mini-cart border-0 bg-transparent p-0">
-                <i class="bi bi-bag-plus fs-5 text-dark"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="product-item text-center">
-          <div class="image-holder" style="background-color: #f8f9fa; padding: 30px; border-radius: 4px; overflow: hidden;">
-            <img src="{{ asset('images/product6.jpg') }}" alt="product" class="img-fluid hover-zoom-effect">
-          </div>
-          <div class="product-detail pt-4 px-1 text-center">
-            <h6 class="text-uppercase mb-2" style="font-family: 'Marcellus', serif; letter-spacing: 2px; font-weight: 300; font-size: 1.3rem;">Signature Card</h6>
-            <div class="d-flex align-items-center justify-content-center gap-4">
-              <span class="text-muted" style="font-size: 0.9rem; letter-spacing: 1px;">5.00 SAR</span>
-              <div style="width: 1px; height: 15px; background-color: #e0e0e0;"></div>
-              <button class="btn-mini-cart border-0 bg-transparent p-0">
-                <i class="bi bi-bag-plus fs-5 text-dark"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
- <div class="row mt-5">
-  <div class="col-12 text-center d-flex flex-column flex-md-row justify-content-center align-items-center gap-3">
-
-    <a href="{{ url('/shop') }}" class="btn btn-outline-dark text-uppercase px-5 py-3" style="letter-spacing: 2px; font-size: 1.3rem;">
-      View All Products
-    </a>
-  </div>
- </div>
- </section> -->
     <section id="occasion-catalog" class="py-5 bg-white">
         <div class="container-fluid px-4 px-lg-5 occasion-wrapper" data-aos="fade-up">
 
@@ -451,356 +276,6 @@
             </div>
         </div>
     </section>
-    <section id="trending" class="py-5 trending-section">
-        <div class="container-fluid px-0" data-aos="fade-left">
-
-            <!-- Title -->
-            <div class="text-center mb-5">
-                <h2 class="trending-title">Trending Personalizations</h2>
-                <p class="trending-subtitle">
-                    Hand-picked favorites that our customers love to customize the most.
-                </p>
-            </div>
-
-            <!-- Swiper -->
-            <div class="swiper trendingSwiper">
-
-                <div class="swiper-wrapper">
-
-                    <!-- Product 1 -->
-                    <div class="swiper-slide">
-                        <div class="trending-card">
-                            <div class="trending-img-wrapper">
-                                <img src="{{ asset('images/cat1.png') }}" alt="Product">
-                                <div class="wishlist-icon">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                            </div>
-                            <div class="trending-card-body">
-                                <div class="rating">★★★★★ <span>(32)</span></div>
-                                <h3 class="h6 text-uppercase mb-1"
-                                    style="font-family: var(--heading-font); padding: 20px 0 15px 0 ;">Luxury Perfume
-                                </h3>
-                                <div class="price">$89.00</div>
-                                <button class="btn trending-btn w-100">
-                                    <i class="bi bi-cart"></i> Add to Cart
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 2 -->
-                    <div class="swiper-slide">
-                        <div class="trending-card">
-                            <div class="trending-img-wrapper">
-                                <img src="{{ asset('images/cat1.png') }}" alt="Product">
-                                <div class="wishlist-icon">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                            </div>
-                            <div class="trending-card-body">
-                                <div class="rating">★★★★★ <span>(22)</span></div>
-                                <h3 class="h6 text-uppercase mb-1"
-                                    style="font-family: var(--heading-font); padding: 20px 0 15px 0 ;">Luxury Perfume
-                                </h3>
-
-                                <div class="price">$74.00</div>
-                                <button class="btn trending-btn w-100">
-                                    <i class="bi bi-cart"></i> Add to Cart
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 3 -->
-                    <div class="swiper-slide">
-                        <div class="trending-card">
-                            <div class="trending-img-wrapper">
-                                <img src="{{ asset('images/cat1.png') }}" alt="Product">
-                                <div class="wishlist-icon">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                            </div>
-                            <div class="trending-card-body">
-                                <div class="rating">★★★★★ <span>(18)</span></div>
-                                <h3 class="h6 text-uppercase mb-1"
-                                    style="font-family: var(--heading-font); padding: 20px 0 15px 0 ;">Luxury Perfume
-                                </h3>
-
-                                <div class="price">$92.00</div>
-                                <button class="btn trending-btn w-100">
-                                    <i class="bi bi-cart"></i> Add to Cart
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 4 -->
-                    <div class="swiper-slide">
-                        <div class="trending-card">
-                            <div class="trending-img-wrapper">
-                                <img src="{{ asset('images/cat1.png') }}" alt="Product">
-                                <div class="wishlist-icon">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                            </div>
-                            <div class="trending-card-body">
-                                <div class="rating">★★★★★ <span>(63)</span></div>
-                                <h3 class="h6 text-uppercase mb-1"
-                                    style="font-family: var(--heading-font); padding: 20px 0 15px 0 ;">Luxury Perfume
-                                </h3>
-
-                                <div class="price">$65.00</div>
-                                <button class="btn trending-btn w-100">
-                                    <i class="bi bi-cart"></i> Add to Cart
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 5 -->
-                    <div class="swiper-slide">
-                        <div class="trending-card">
-                            <div class="trending-img-wrapper">
-                                <img src="{{ asset('images/cat1.png') }}" alt="Product">
-                                <div class="wishlist-icon">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                            </div>
-                            <div class="trending-card-body">
-                                <div class="rating">★★★★★ <span>(41)</span></div>
-                                <h3 class="h6 text-uppercase mb-1"
-                                    style="font-family: var(--heading-font); padding: 20px 0 15px 0 ;">Luxury Perfume
-                                </h3>
-
-                                <div class="price">$80.00</div>
-                                <button class="btn trending-btn w-100">
-                                    <i class="bi bi-cart"></i> Add to Cart
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    {{-- <section id="custom-solution" class="py-5" style="background-color: #f9fafb; overflow: hidden;">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-8 text-center" data-aos="fade-up">
-                    <div class="custom-solution-content p-5 border rounded-0 bg-white shadow-sm custom-hover-card">
-
-                        <div class="mb-4 text-dark" data-aos="zoom-in" data-aos-delay="300">
-                            <i class="bi bi-chat-left-dots fs-1"></i>
-                        </div>
-
-                        <h2 class="display-5 mb-3 text-uppercase" style="font-family: var(--heading-font);">Need a
-                            Custom Solution?</h2>
-
-                        <p class="lead text-muted mb-4">
-                            Looking for something unique? Whether it's a specific design, bulk ordering, or a
-                            specialized fashion service, our team is ready to bring your vision to life.
-                        </p>
-
-                        <div class="row mt-5">
-                            <div class="col-12 text-center">
-                                <a href="{{ url('/products') }}" class="btn btn-view-all text-uppercase">
-                                    Contact Us Now
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- <section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
-    <div class="container">
-      <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
-        <h4 class="text-uppercase">Our New Arrivals</h4>
-        <a href="index.html" class="btn-link">View All Products</a>
-      </div>
-      <div class="swiper product-swiper open-up" data-aos="zoom-out">
-        <div class="swiper-wrapper d-flex">
-          <div class="swiper-slide">
-            <div class="product-item image-zoom-effect link-effect">
-              <div class="image-holder position-relative">
-                <a href="index.html">
-                  <img src="{{ asset('images/Home (10).png') }}" alt="categories" class="product-image img-fluid">
-                </a>
-                <a href="index.html" class="btn-icon btn-wishlist">
-                  <svg width="24" height="24" viewBox="0 0 24 24">
-                    <use xlink:href="#heart"></use>
-                  </svg>
-                </a>
-                <div class="product-content">
-                  <h5 class="element-title text-uppercase fs-5 mt-3">
-                    <a href="index.html">Dark florish onepiece</a>
-                  </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$95.00</span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-item image-zoom-effect link-effect">
-              <div class="image-holder position-relative">
-                <a href="index.html">
-                  <img src="{{ asset('images/Eid__ (8).png') }}" alt="categories" class="product-image img-fluid">
-                </a>
-                <a href="index.html" class="btn-icon btn-wishlist">
-                  <svg width="24" height="24" viewBox="0 0 24 24">
-                    <use xlink:href="#heart"></use>
-                  </svg>
-                </a>
-                <div class="product-content">
-                  <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="index.html">Cotton off-white shirt</a>
-                  </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$65.00</span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-item image-zoom-effect link-effect">
-              <div class="image-holder position-relative">
-                <a href="index.html">
-                  <img src="{{ asset('images/Eid__ (1).png') }}" alt="categories" class="product-image img-fluid">
-                </a>
-                <a href="index.html" class="btn-icon btn-wishlist">
-                  <svg width="24" height="24" viewBox="0 0 24 24">
-                    <use xlink:href="#heart"></use>
-                  </svg>
-                </a>
-                <div class="product-content">
-                  <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="index.html">Cotton off-white shirt</a>
-                  </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$65.00</span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-                    <div class="swiper-slide">
-            <div class="product-item image-zoom-effect link-effect">
-              <div class="image-holder position-relative">
-                <a href="index.html">
-                  <img src="{{ asset('images/Eid__ (10).png') }}" alt="categories" class="product-image img-fluid">
-                </a>
-                <a href="index.html" class="btn-icon btn-wishlist">
-                  <svg width="24" height="24" viewBox="0 0 24 24">
-                    <use xlink:href="#heart"></use>
-                  </svg>
-                </a>
-                <div class="product-content">
-                  <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="index.html">Cotton off-white shirt</a>
-                  </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$65.00</span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-item image-zoom-effect link-effect">
-              <div class="image-holder position-relative">
-                <a href="index.html">
-                  <img src="{{ asset('images/Eid__ (4).png') }}" alt="categories" class="product-image img-fluid">
-                </a>
-                <a href="index.html" class="btn-icon btn-wishlist">
-                  <svg width="24" height="24" viewBox="0 0 24 24">
-                    <use xlink:href="#heart"></use>
-                  </svg>
-                </a>
-                <div class="product-content">
-                  <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="index.html">Crop sweater</a>
-                  </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$50.00</span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-item image-zoom-effect link-effect">
-              <div class="image-holder position-relative">
-                <a href="index.html">
-                  <img src="{{ asset('images/Home (1).png') }}" alt="categories" class="product-image img-fluid">
-                </a>
-                <a href="index.html" class="btn-icon btn-wishlist">
-                  <svg width="24" height="24" viewBox="0 0 24 24">
-                    <use xlink:href="#heart"></use>
-                  </svg>
-                </a>
-                <div class="product-content">
-                  <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="index.html">Crop sweater</a>
-                  </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$70.00</span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="swiper-pagination"></div>
-      </div>
-      <div class="icon-arrow icon-arrow-left"><svg width="50" height="50" viewBox="0 0 24 24">
-          <use xlink:href="#arrow-left"></use>
-        </svg></div>
-      <div class="icon-arrow icon-arrow-right"><svg width="50" height="50" viewBox="0 0 24 24">
-          <use xlink:href="#arrow-right"></use>
-        </svg></div>
-    </div>
-  </section> -->
-
-    <!-- <section class="testimonials py-5 bg-light">
-    <div class="section-header text-center mt-5">
-      <h3 class="section-title">WE LOVE GOOD COMPLIMENT</h3>
-    </div>
-    <div class="swiper testimonial-swiper overflow-hidden my-5">
-      <div class="swiper-wrapper d-flex">
-        <div class="swiper-slide">
-          <div class="testimonial-item text-center">
-            <blockquote>
-              <p>“More than expected crazy soft, flexible and best fitted white simple denim shirt.”</p>
-              <div class="review-title text-uppercase">casual way</div>
-            </blockquote>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="testimonial-item text-center">
-            <blockquote>
-              <p>“Best fitted white denim shirt more than expected crazy soft, flexible</p>
-              <div class="review-title text-uppercase">uptop</div>
-            </blockquote>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="testimonial-item text-center">
-            <blockquote>
-              <p>“Best fitted white denim shirt more white denim than expected flexible crazy soft.”</p>
-              <div class="review-title text-uppercase">Denim craze</div>
-            </blockquote>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="testimonial-item text-center">
-            <blockquote>
-              <p>“Best fitted white denim shirt more than expected crazy soft, flexible</p>
-              <div class="review-title text-uppercase">uptop</div>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-swiper-pagination d-flex justify-content-center mb-5"></div>
-  </section> -->
 
     <section id="wrap-feelings" class="wrap-section py-5">
         <div class="container-fluid px-md-5">
@@ -1115,7 +590,7 @@
         </div>
     </section>
 
-    <script>
+    <script>⃁
         function handleAQuteRequest() {
             // Navigate to a contact or quote request page
             alert('Thank you for your interest! Please fill out the form to request a quote.');
@@ -1207,13 +682,7 @@
             </div>
         </div>
     </footer>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/SmoothScroll.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
     <script src="js/script.min.js"></script>
     <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -1249,7 +718,6 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-</body>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // 1. قاعدة البيانات الوهمية (تأكدي أن أسماء الصور صحيحة في مجلد images عندك)
@@ -1339,16 +807,16 @@
                 });
             });
         });
-/*
-        function renderProducts(products) {
-            if (products.length === 0) {
-                container.innerHTML =
-                    '<div class="col-12 text-center"><p class="text-muted">Coming Soon: More products for this occasion!</p></div>';
-                return;
-            }*/
+        /*
+                function renderProducts(products) {
+                    if (products.length === 0) {
+                        container.innerHTML =
+                            '<div class="col-12 text-center"><p class="text-muted">Coming Soon: More products for this occasion!</p></div>';
+                        return;
+                    }*/
 
-            // تحويل المصفوفة إلى HTML (نفس التصميم الاحترافي اللي عملناه أول مرة)
-            container.innerHTML = products.map(p => `
+        // تحويل المصفوفة إلى HTML (نفس التصميم الاحترافي اللي عملناه أول مرة)
+        container.innerHTML = products.map(p => `
             <div class="col-6 col-md-4 col-lg-3 mb-4" data-aos="fade-up">
                 <div class="product-item shadow-sm p-2 border-0 card h-100">
                     <div class="image-holder overflow-hidden" style="height: 250px;">
@@ -1364,7 +832,7 @@
                 </div>
             </div>
         `).join('');
-        }
+    }
     });
     // تفعيل مراقبة السكاشن لتغيير الكلمة النشطة
     window.addEventListener('scroll', () => {
@@ -1386,8 +854,6 @@
             }
         });
     });
-</script>
-<script>
     var swiper = new Swiper(".trendingSwiper", {
         slidesPerView: 1,
         spaceBetween: 20,
@@ -1417,5 +883,38 @@
         }
     });
 </script>
+<script>
+    // هذه الدالة ستنفذ نفسها مراراً لتضمن تحديث الرقم حتى لو تأخر تحميل الصفحة
+    function forceUpdateCart() {
+        try {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let total = 0;
+            cart.forEach(item => {
+                total += parseInt(item.quantity) || 1;
+            });
 
+            // نبحث عن العنصر في كل الصفحة
+            let cartCountElement = document.getElementById("cart-count");
+
+            if (cartCountElement) {
+                cartCountElement.textContent = total;
+                console.log("Cart updated to: " + total);
+            } else {
+                console.warn("Element #cart-count not found!");
+            }
+        } catch (e) {
+            console.error("Error updating cart:", e);
+        }
+    }
+
+    // تشغيل الدالة فوراً
+    forceUpdateCart();
+
+    // تشغيلها بعد ثانية واحدة للتأكد (احتياطاً في حال تأخر تحميل الهيدر)
+    setTimeout(forceUpdateCart, 1000);
+
+    // تشغيلها عند اكتمال تحميل كل شيء
+    window.onload = forceUpdateCart;
+</script>
+</body>
 </html>
